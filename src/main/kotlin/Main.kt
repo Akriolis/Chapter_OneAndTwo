@@ -1,3 +1,5 @@
+import java.lang.Exception
+
 fun main(){
     val persons = listOf<Person>(
         Person("Alice"),
@@ -88,6 +90,30 @@ fun main(){
     testTest.setAge2(20)
     println(testTest.getAge)
 
+    val answer: Int
+    if (true){
+        answer = 10
+    } else {
+        answer = 5
+    }
+
+    val testRectangle: Rectangle = Rectangle(10,20)
+
+    while (true){
+        val myTest = testRectangle.createRandomRectangle()
+        if (myTest.isSquare){
+            println("Bingo!")
+            break
+        }
+    }
+
+    println(Color.RED.rgb())
+
+    println(getMnemonic(Color.INDIGO))
+
+    println(getWarmth(Color.RED))
+
+    println(mix(Color.BLUE,Color.YELLOW))
 
 }
 /**
@@ -107,3 +133,40 @@ fun max2 (a: Int, b: Int): Int = if (a > b) a else b
 // return type also can be omitted (only for fun with an expression body)
 
 fun max3 (a: Int, b: Int) = if (a > b) a else b
+
+/**
+ * Two keywords to declare a variable - val and var
+ *
+ * val stands for value
+ * immutable reference, a variable declared with val can't be reassigned after
+ * initialization. It corresponds to a final variable in Java.
+ *
+ * var stands for variable
+ * mutable reference, the value of var can be changed.
+ * It corresponds to a regular (non-final) Java variable
+ */
+
+fun getMnemonic(color: Color) =
+    when (color) {
+        Color.RED -> "Richard"
+        Color.ORANGE -> "Of"
+        Color.YELLOW -> "York"
+        Color.GREEN -> "Gave"
+        Color.BLUE -> "Battle"
+        Color.INDIGO -> "In"
+        Color.VIOLET -> "Vain"
+    }
+
+fun getWarmth (color: Color) = when (color){
+    Color.RED, Color.ORANGE, Color.YELLOW -> "warm"
+    Color.GREEN -> "neutral"
+    Color.BLUE, Color.INDIGO, Color.VIOLET -> "cold"
+}
+
+fun mix (c1: Color, c2: Color) =
+    when (setOf<Color>(c1,c2)){
+        setOf(Color.RED, Color.YELLOW) -> Color.ORANGE
+        setOf(Color.YELLOW, Color.BLUE) -> Color.GREEN
+        setOf(Color.BLUE, Color.VIOLET) -> Color.INDIGO
+        else -> throw Exception ("Dirty color")
+    }

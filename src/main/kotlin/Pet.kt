@@ -9,7 +9,9 @@ class Pet {
         }
 
     val getAge: Int
-        get() = this.age
+        get() {
+            return age
+        }
 
     fun setAge2(age: Int){
         this.age = age
